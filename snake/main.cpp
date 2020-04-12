@@ -7,13 +7,13 @@ using namespace std;
 
 int main()
 {
-
+	int score = 0;
 	Apple apple(25, 0.65f);
 
 	Timer timer;
 	RenderWindow window(VideoMode(500, 500), "Snake");
 	Cell cell(25, 0.65f);
-	Snake snake(8, cell);
+	Snake snake(3, cell);
 
 	while (window.isOpen())
 	{
@@ -39,16 +39,24 @@ int main()
 			}
 
 		}
-		window.clear(Color::Green);
-		snake.Draw(window);
-		apple.DrawApple(window);
-		if (timer.Check(0.5f)) { 
-			//cout << "Apple position is: "<< apple.pos.x << " " << apple.pos.y << endl;
-			snake.TranslateSnake(); 
-			snake.ChangeDirect();
-			snake.CheckCollectApple(apple, cell);
+		if (snake.Alive) {
+			window.clear(Color::Green);
+			snake.Draw(window);
+			apple.DrawApple(window);
+			if (timer.Check(0.5f)) { // скорость перемещения змейки
+				//cout << "Apple position is: "<< apple.pos.x << " " << apple.pos.y << endl;
+				snake.TranslateSnake();
+				snake.ChangeDirect();
+				snake.CheckCollectApple(apple, cell, score);
+				snake.CheckDeath();
+				//cout << snake.cells[0].border.getPosition().x << " " << snake.cells[0].border.getPosition().y << endl;
+			}
+			window.display();
 		}
-		window.display();
+		else {
+			window.clear(Color::Red);
+			window.display();
+		}
 	}
 	return 0;
 }

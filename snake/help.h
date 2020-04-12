@@ -71,8 +71,8 @@ public:
 
 	void Spawn() {
 		srand(time(0));
-		int x = (rand() % 18 + 2) * 25, y = (rand() % 19 + 2) * 25;
-		cout << "Respawn! New points are: x = " << x << " y = " << y << endl;
+		int x = (rand() % 18 + 2) * 25, y = (rand() % 18 + 2) * 25;
+		cout << "Respawn Apple! New points are: x = " << x << " y = " << y << endl;
 		Vector2f _pos = Vector2f(x, y);
 		pos = _pos;
 		SetPosMainPart(); // для того чтобы mainPart встала по центру
@@ -90,6 +90,7 @@ public:
 class Snake {
 public:
 	vector<Cell> cells;
+	bool Alive = true;
 
 	void TranslateSnake(Vector2f v2) {
 		for (int i = 0; i < cells.size(); i++)
@@ -130,12 +131,33 @@ public:
 			}
 		}
 	}
-	void CheckCollectApple(Apple &apple, Cell cell) {
+	void CheckCollectApple(Apple &apple, Cell cell, int &score) {
 		if (apple.pos == cells[0].border.getPosition()) {
 			apple.Spawn();
 			addCell(cell);
+			score++;
+			cout << "Now your score iqual to " << score << endl;
 			cout << "Apple was collected! && snake size = " << cells.size() << endl;
 		}
+	}
+
+	void Death() {
+		cout << "Snake dead!";
+	}
+
+	void CheckDeath() {
+		// 1 когда змейка коснулась себя
+		for (int i = 0; i < cells.size(); i++) {
+			for (int j = 0; j < cells.size(); j++) {
+				if (cells[i].border.getPosition() == cells[j].border.getPosition() && i != j) {
+					Alive = false;
+				}
+			}
+		}
+
+		// 2 когда змейка коснулась конца поля (за размер поля беряться размер 500х500)
+		if (cells[0].border.getPosition().x == 500 || cells[0].border.getPosition().y == 500 || cells[0].border.getPosition().x == -25 || cells[0].border.getPosition().y == -25) Alive = false;
+		if (!Alive) Death();
 	}
 };
 

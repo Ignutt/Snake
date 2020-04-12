@@ -10,7 +10,9 @@ D:\SpaceWork\CPP\snake\snake\snake\help.h(76,28): warning C4244: аргумен�
           [
               T=float
           ]
-D:\SpaceWork\CPP\snake\snake\snake\help.h(95,21): warning C4018: <: несоответствие типов со знаком и без знака
-D:\SpaceWork\CPP\snake\snake\snake\help.h(100,21): warning C4018: <: несоответствие типов со знаком и без знака
-D:\SpaceWork\CPP\snake\snake\snake\help.h(121,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\help.h(96,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\help.h(101,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\help.h(122,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\help.h(150,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\help.h(151,22): warning C4018: <: несоответствие типов со знаком и без знака
   snake.vcxproj -> D:\SpaceWork\CPP\snake\snake\Debug\snake.exe
