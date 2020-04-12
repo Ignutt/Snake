@@ -43,10 +43,10 @@ int main()
 		snake.Draw(window);
 		apple.DrawApple(window);
 		if (timer.Check(0.5f)) { 
-			cout << "Apple position is: "<< apple.pos.x << " " << apple.pos.y << endl;
+			//cout << "Apple position is: "<< apple.pos.x << " " << apple.pos.y << endl;
 			snake.TranslateSnake(); 
 			snake.ChangeDirect();
-			snake.CheckCollectApple(apple);
+			snake.CheckCollectApple(apple, cell);
 		}
 		window.display();
 	}

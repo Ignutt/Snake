@@ -71,7 +71,7 @@ public:
 
 	void Spawn() {
 		srand(time(0));
-		int x = (rand() % 19 + 2) * 25, y = (rand() % 19 + 2) * 25;
+		int x = (rand() % 18 + 2) * 25, y = (rand() % 19 + 2) * 25;
 		cout << "Respawn! New points are: x = " << x << " y = " << y << endl;
 		Vector2f _pos = Vector2f(x, y);
 		pos = _pos;
@@ -110,6 +110,13 @@ public:
 		TranslateSnake(Vector2f(0, -cell.size));
 	}
 
+	void addCell(Cell cell) {
+		cell = cells[cells.size() - 1];
+		cell.border.move(Vector2f(-cells[cells.size() - 1].direct));
+		cell.main.move(Vector2f(-cells[cells.size() - 1].direct));
+		cells.push_back(cell);
+	}
+
 	void Draw(RenderWindow& win) {
 		for (int i = 0; i < cells.size(); i++) {
 			cells[i].DrawCell(win);
@@ -123,10 +130,11 @@ public:
 			}
 		}
 	}
-	void CheckCollectApple(Apple &apple) {
+	void CheckCollectApple(Apple &apple, Cell cell) {
 		if (apple.pos == cells[0].border.getPosition()) {
 			apple.Spawn();
-			cout << "Apple was collected!";
+			addCell(cell);
+			cout << "Apple was collected! && snake size = " << cells.size() << endl;
 		}
 	}
 };
