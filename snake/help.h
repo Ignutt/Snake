@@ -87,10 +87,34 @@ public:
 	}
 };
 
+class Timer {
+public:
+	Time time;
+	Clock clock;
+	float seconds = 0, per;
+
+	Timer(float _per) {
+		per = _per;
+	}
+
+	void Update() {
+		time = clock.restart();
+		seconds += time.asSeconds();
+	}
+
+	bool Check() {
+		if (seconds >= per) {
+			seconds = 0;
+			return true;
+		}
+		else return false;
+	}
+};
+
 class Snake {
 public:
 	vector<Cell> cells;
-	bool Alive = true;
+	bool Alive = true, God = false;
 
 	void TranslateSnake(Vector2f v2) {
 		for (int i = 0; i < cells.size(); i++)
@@ -109,6 +133,16 @@ public:
 			cells[i].direct = Vector2f(0, 25);
 		}
 		TranslateSnake(Vector2f(0, -cell.size));
+	}
+
+	Snake(int size, Cell cell, bool godEnable) {
+		for (int i = 0; i < size; i++) {
+			cells.push_back(cell);
+			TranslateSnake(Vector2f(0, cell.size));
+			cells[i].direct = Vector2f(0, 25);
+		}
+		TranslateSnake(Vector2f(0, -cell.size));
+		God = godEnable;
 	}
 
 	void addCell(Cell cell) {
@@ -131,8 +165,10 @@ public:
 			}
 		}
 	}
-	void CheckCollectApple(Apple &apple, Cell cell, int &score) {
+	void CheckCollectApple(Apple &apple, Cell cell, int &score, Timer &timer, float proc) {
 		if (apple.pos == cells[0].border.getPosition()) {
+			timer.per -= timer.per * proc;
+
 			apple.Spawn();
 			addCell(cell);
 			score++;
@@ -147,36 +183,19 @@ public:
 
 	void CheckDeath() {
 		// 1 когда змейка коснулась себя
-		for (int i = 0; i < cells.size(); i++) {
-			for (int j = 0; j < cells.size(); j++) {
-				if (cells[i].border.getPosition() == cells[j].border.getPosition() && i != j) {
-					Alive = false;
+		if (!God) {
+			for (int i = 0; i < cells.size(); i++) {
+				for (int j = 0; j < cells.size(); j++) {
+					if (cells[i].border.getPosition() == cells[j].border.getPosition() && i != j) {
+						Alive = false;
+					}
 				}
 			}
-		}
 
-		// 2 когда змейка коснулась конца поля (за размер поля беряться размер 500х500)
-		if (cells[0].border.getPosition().x == 500 || cells[0].border.getPosition().y == 500 || cells[0].border.getPosition().x == -25 || cells[0].border.getPosition().y == -25) Alive = false;
-		if (!Alive) Death();
+			// 2 когда змейка коснулась конца поля (за размер поля беряться размер 500х500)
+			if (cells[0].border.getPosition().x == 500 || cells[0].border.getPosition().y == 500 || cells[0].border.getPosition().x == -25 || cells[0].border.getPosition().y == -25) Alive = false;
+			if (!Alive) Death();
+		}
 	}
 };
 
-class Timer {
-public:
-	Time time;
-	Clock clock;
-	float seconds = 0;
-
-	void Update() {
-		time = clock.restart();
-		seconds += time.asSeconds();
-	}
-
-	bool Check(float per) {
-		if (seconds >= per) {
-			seconds = 0;
-			return true;
-		}
-		else return false;
-	}
-};

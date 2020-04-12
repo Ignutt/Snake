@@ -10,7 +10,7 @@ int main()
 	int score = 0;
 	Apple apple(25, 0.65f);
 
-	Timer timer;
+	Timer timer(0.25);
 	RenderWindow window(VideoMode(500, 500), "Snake");
 	Cell cell(25, 0.65f);
 	Snake snake(3, cell);
@@ -43,11 +43,11 @@ int main()
 			window.clear(Color::Green);
 			snake.Draw(window);
 			apple.DrawApple(window);
-			if (timer.Check(0.5f)) { // скорость перемещения змейки
+			if (timer.Check()) { // скорость перемещения змейки
 				//cout << "Apple position is: "<< apple.pos.x << " " << apple.pos.y << endl;
 				snake.TranslateSnake();
 				snake.ChangeDirect();
-				snake.CheckCollectApple(apple, cell, score);
+				snake.CheckCollectApple(apple, cell, score, timer, 0.05); 
 				snake.CheckDeath();
 				//cout << snake.cells[0].border.getPosition().x << " " << snake.cells[0].border.getPosition().y << endl;
 			}
