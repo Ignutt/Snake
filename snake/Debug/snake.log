@@ -1,0 +1,16 @@
+﻿  main.cpp
+D:\SpaceWork\CPP\snake\snake\snake\help.h(73,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\SpaceWork\CPP\snake\snake\snake\help.h(76,31): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\SpaceWork\CPP\snake\snake\snake\help.h(76,28): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\SpaceWork\CPP\snake\snake\snake\help.h(95,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\help.h(100,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\help.h(114,21): warning C4018: <: несоответствие типов со знаком и без знака
+  snake.vcxproj -> D:\SpaceWork\CPP\snake\snake\Debug\snake.exe
