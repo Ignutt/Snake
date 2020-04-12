@@ -1,19 +1,32 @@
 ﻿  main.cpp
-D:\SpaceWork\CPP\snake\snake\snake\help.h(73,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\SpaceWork\CPP\snake\snake\snake\help.h(76,31): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+D:\SpaceWork\CPP\snake\snake\snake\help.h(74,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\help.h(82,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\SpaceWork\CPP\snake\snake\snake\help.h(84,32): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
           with
           [
               T=float
           ]
-D:\SpaceWork\CPP\snake\snake\snake\help.h(76,28): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+D:\SpaceWork\CPP\snake\snake\snake\help.h(84,29): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
           with
           [
               T=float
           ]
-D:\SpaceWork\CPP\snake\snake\snake\help.h(120,21): warning C4018: <: несоответствие типов со знаком и без знака
-D:\SpaceWork\CPP\snake\snake\snake\help.h(125,21): warning C4018: <: несоответствие типов со знаком и без знака
-D:\SpaceWork\CPP\snake\snake\snake\help.h(156,21): warning C4018: <: несоответствие типов со знаком и без знака
-D:\SpaceWork\CPP\snake\snake\snake\help.h(187,22): warning C4018: <: несоответствие типов со знаком и без знака
-D:\SpaceWork\CPP\snake\snake\snake\help.h(188,23): warning C4018: <: несоответствие типов со знаком и без знака
-D:\SpaceWork\CPP\snake\snake\snake\main.cpp(50,60): warning C4305: аргумент: усечение из "double" в "float"
+D:\SpaceWork\CPP\snake\snake\snake\help.h(85,14): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\SpaceWork\CPP\snake\snake\snake\help.h(90,31): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\SpaceWork\CPP\snake\snake\snake\help.h(90,28): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\SpaceWork\CPP\snake\snake\snake\help.h(134,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\help.h(139,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\help.h(173,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\help.h(204,22): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\help.h(205,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\SpaceWork\CPP\snake\snake\snake\main.cpp(13,18): warning C4305: аргумент: усечение из "double" в "float"
+D:\SpaceWork\CPP\snake\snake\snake\main.cpp(52,60): warning C4305: аргумент: усечение из "double" в "float"
   snake.vcxproj -> D:\SpaceWork\CPP\snake\snake\Debug\snake.exe

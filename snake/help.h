@@ -43,6 +43,7 @@ public:
 
 class Apple {
 public:
+	vector <Cell> cells; // copy array from snake to spawn apple
 
 	Vector2f pos;
 	RectangleShape main, border;
@@ -58,7 +59,7 @@ public:
 
 		float size_main = _size * _proc;
 		main.setSize(Vector2f(size_main, size_main));
-		Color main_color(145, 168, 10);
+		Color main_color(245, 137, 5);
 		main.setFillColor(main_color);
 		main.setPosition(Vector2f((_size - size_main) / 2, (_size - size_main) / 2));
 		Spawn();
@@ -69,9 +70,22 @@ public:
 		main.setPosition(Vector2f((size - size_main) / 2, (size - size_main) / 2));
 	}
 
+	bool canSpawn(Vector2f pos) {
+		for (int i = 0; i < cells.size(); i++) {
+			if (pos == cells[i].border.getPosition()) return false;
+		}
+		return true;
+	}
+
 	void Spawn() {
+		
 		srand(time(0));
 		int x = (rand() % 18 + 2) * 25, y = (rand() % 18 + 2) * 25;
+		while (!canSpawn(Vector2f(x, y))) {
+			srand(time(0));
+			x = (rand() % 18 + 2) * 25, y = (rand() % 18 + 2) * 25;
+			cout << "Try to spawn... X = " << x << " Y = " << y << endl;
+		}
 		cout << "Respawn Apple! New points are: x = " << x << " y = " << y << endl;
 		Vector2f _pos = Vector2f(x, y);
 		pos = _pos;
@@ -121,9 +135,11 @@ public:
 			cells[i].TranslateCell(v2);
 	}
 
-	void TranslateSnake() {
+	void TranslateSnake(Apple &apple) {
 		for (int i = 0; i < cells.size(); i++)
 			cells[i].TranslateCell(cells[i].direct);
+		apple.cells = cells;
+
 	}
 
 	Snake(int size, Cell cell) {
@@ -133,6 +149,7 @@ public:
 			cells[i].direct = Vector2f(0, 25);
 		}
 		TranslateSnake(Vector2f(0, -cell.size));
+
 	}
 
 	Snake(int size, Cell cell, bool godEnable) {
