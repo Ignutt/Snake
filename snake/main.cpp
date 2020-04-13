@@ -5,15 +5,36 @@
 using namespace sf;
 using namespace std;
 
+void Introdaction(float &speed, int &size) {
+	system("cls");
+	cout << "Some setting..." << endl << "If you want to skip this step and play with default options, just input 0" << endl <<
+		"1) Speed snake (0.01 - fast; 1.0 - slow): " << endl << "> ";
+	cin >> speed;
+	if (speed > 0 && speed < 3) {
+		cout << endl << "2) Size of snake (min 1; max 18): " << endl << "> ";
+		cin >> size;
+		if (size < 1 && size > 18) size = 3;
+	}
+	else {
+		speed = 1;
+		size = 3;
+	}
+	
+}
+
 int main()
 {
 	int score = 0;
 	Apple apple(25, 0.65f);
 
-	Timer timer(0.3);
+	float speed = 1; int size = 3;
+	
+	Introdaction(speed, size);
+
+	Timer timer(speed);
 	RenderWindow window(VideoMode(500, 500), "Snake");
 	Cell cell(25, 0.65f);
-	Snake snake(19, cell);
+	Snake snake(size, cell);
 
 	while (window.isOpen())
 	{
